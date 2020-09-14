@@ -65,7 +65,7 @@ function App() {
 
         // Set Center on Map
         if (countryCode === 'worldwide') {
-          setMapCenter([{ lat: 20.5937, lng: 78.9629 }])
+          setMapCenter({ lat: 20.5937, lng: 78.9629 })
           setMapZoom(3)
         } else {
           setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
@@ -82,7 +82,7 @@ function App() {
     <div className="app">
       <div className="app__left">
         <div className="app__header">
-          <h1>COVID 19 TRACKER</h1>
+          <h1>COVID 19 TRACKER</h1>          
           <FormControl className="app__dropdown">
             <Select variant="outlined" value={country} onChange={onCountryChange}>
               <MenuItem value="worldwide">Worldwide</MenuItem>
@@ -128,9 +128,10 @@ function App() {
 
       </div>
       <Card className="app__right">
-        <CardContent>
+        <CardContent>          
           <h3>Live Cases by Country</h3>
           <Table countries={tableData} />
+          
           <h3>Worldwide new {casesType}</h3>
           <LineGraph casesType={casesType} />
         </CardContent>

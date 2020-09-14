@@ -54,7 +54,7 @@ function LineGraph({casesType='cases'}) {
     const [data, setData] = useState({});
 
     // Build Line Chart
-    const buildChartData = (data, casesType = 'cases') => {
+    const buildChartData = (data) => {
         let chartData = [];
         let lastDataPoint;
         for (let date in data[casesType]) {
