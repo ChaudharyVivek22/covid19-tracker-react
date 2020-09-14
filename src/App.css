@@ -1,5 +1,7 @@
+/* -------------Layout-----------------
+--------------------------------------- */
 *{
-    margin:0;        
+    margin:0;       
 }
 
 body{
@@ -8,12 +10,19 @@ body{
 
 .app{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-evenly;    
     padding: 2em;
 }
 
 .app__left{
-    flex:0.8;    
+    flex: 0.8;
+    /* border: 1px solid red; */
+}
+
+.app__right{
+    min-width: 300px;
+    max-height: 43em;
+    /* border: 1px solid black;     */
 }
 
 @media (max-width: 990px){
@@ -22,6 +31,9 @@ body{
     }
 }
 
+
+/* -------------App Left---------------
+--------------------------------------- */
 .app__header{    
     display:flex;
     justify-content: space-between;
@@ -30,6 +42,16 @@ body{
 }
 
 .app__stats{
-    display: flex;
-    justify-content: space-between;
+    display: flex;  
+    justify-content: space-between;    
 }
+
+/* -------------App Right--------------
+--------------------------------------- */
+.app__right h3:nth-of-type(2){
+    margin-top: 1.2em;
+    margin-bottom: 0.5em;
+}
+
+
+

@@ -1,0 +1,11 @@
+.infoBox{    
+    /* border: 2px solid red; */
+    /* margin-right: 5em; */
+    min-width: 200px;
+    min-height: 150px;
+}
+
+.infoBox h2{
+    font-size: 38px;
+    margin: 0.3em 0;
+}

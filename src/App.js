@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { MenuItem, Select, FormControl, Card, CardContent } from "@material-ui/core";
+import { sortData } from './util';
 import InfoBox from './InfoBox';
 import Map from './Map';
+import Table from './Table';
+import LineGraph from './LineGraph';
 import './App.css';
 
 
@@ -12,46 +15,51 @@ function App() {
   const [tableData, setTableData] = useState([]);
 
   // Get the list of all countries
+  // Get the countries and their data
   useEffect(() => {
     const getCountriesData = async () => {
       await fetch("https://disease.sh/v3/covid-19/countries")
         .then((res) => res.json())
         .then(data => {
           const countries = data.map((country) => ({
-              name: country.country,
-              value: country.countryInfo.iso2
-            }
+            name: country.country,
+            value: country.countryInfo.iso2
+          }
           ))
-          setTableData(data)
+          const sortedData = sortData(data);
+          setTableData(sortedData)
           setCountries(countries)
         })
-    }    
+    }
+    getCountriesData();
   }, [])
 
   // Load Default for worldwide cases
-  useEffect(()=>{
+  useEffect(() => {
     fetch('https://disease.sh/v3/covid-19/all')
-    .then(res=>res.json())
-    .then(data=>{setCountryInfo(data)})
-  },[])
+      .then(res => res.json())
+      .then(data => { setCountryInfo(data) })
+  }, [])
 
   // Handle when country is changing via dropdown
   const onCountryChange = async (event) => {
     const countryCode = event.target.value;
-    console.log(countryCode);  
+    console.log(countryCode);
     const url = countryCode === 'worldwide' ?
       'https://disease.sh/v3/covid-19/all' :
       `https://disease.sh/v3/covid-19/countries/${countryCode}`
 
     await fetch(url)
-    .then(res=>res.json())
-    .then(data=>{
+      .then(res => res.json())
+      .then(data => {
         setCountry(countryCode);
         setCountryInfo(data);
-    })    
+      })
   }
+
   // Log ContryInfo to see json
   console.log(countryInfo);
+  console.log(tableData);
 
   return (
     <div className="app">
@@ -78,8 +86,10 @@ function App() {
       </div>
       <Card className="app__right">
         <CardContent>
-          <h3>Live Cases by Country</h3>          
+          <h3>Live Cases by Country</h3>
+          <Table countries={tableData} />
           <h3>Worldwide new cases</h3>
+          <LineGraph />
         </CardContent>
       </Card>
     </div>
