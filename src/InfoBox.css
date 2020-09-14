@@ -1,11 +1,29 @@
-.infoBox{    
-    /* border: 2px solid red; */
-    /* margin-right: 5em; */
-    min-width: 200px;
-    min-height: 150px;
+.infoBox{       
+    min-width: 32%;    
+    cursor: default;
 }
 
 .infoBox h2{
-    font-size: 38px;
+    font-size: 36px;
     margin: 0.3em 0;
+}
+
+.infoBox__title {
+    color: black !important;     
+}
+
+.infoBox__cases{
+    color: #cc1034;
+}
+
+.infoBox__selected{
+    border-top: 10px solid #7dd71d;    
+}
+
+.infoBox__red{
+    border-top: 10px solid  #CC1034;    
+}
+
+.infoBox__green{
+    color: #7DD71D;
 }

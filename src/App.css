@@ -38,7 +38,15 @@ body{
     display:flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;    
+    margin-bottom: 20px;        
+}
+
+.app__header h1{
+    color: #CC1034;
+}
+
+.app__dropdown{
+    background-color: white;
 }
 
 .app__stats{
